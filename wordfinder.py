@@ -22,8 +22,17 @@ class WordFinder:
         """Return random word."""
         return random.choice(self.words)
     
-    
+class SpecialWordFinder(WordFinder):
+    """Specialized WordFinder that excludes blank lines/comments.
+
+    """
+    def parse(self, dict_file):
+        """Parse dict_file -> list of words, skipping blanks/comments."""
+        return [w.strip() for w in dict_file
+                if w.strip() and not w.startswith("#")]
+
 wf = WordFinder("words.txt")
 print(wf.random())
 print(wf.random())
 print(wf.random())
+
