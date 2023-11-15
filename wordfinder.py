@@ -6,7 +6,7 @@ import random
 
 class WordFinder:
     """Machine for finding random words from dictionary.
-
+        
     """
     def __init__(self, path):
         """Read dictionary and print # items read."""
@@ -21,6 +21,10 @@ class WordFinder:
     def random(self):
         """Return random word."""
         return random.choice(self.words)
+    
+    def __repr__(self):
+        """Human-readable representation of object."""
+        return f"WordFinder(words={self.words})"
     
 class SpecialWordFinder(WordFinder):
     """Specialized WordFinder that excludes blank lines/comments.
